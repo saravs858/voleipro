@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+<div class="container">
+    <h1>Painel Administrativo</h1>
+    
+    <section class="admin-section">
+        <h2>Adicionar Novo Treino</h2>
+        <form action="/admin/training" method="POST" class="admin-form">
+            <input type="text" name="title" placeholder="Título" required>
+            <textarea name="description" placeholder="Descrição" required></textarea>
+            <input type="text" name="category" placeholder="Categoria (ex: Saque, Ataque)" required>
+            <select name="difficulty">
+                <option value="Iniciante">Iniciante</option>
+                <option value="Intermediário">Intermediário</option>
+                <option value="Avançado">Avançado</option>
+            </select>
+            <button type="submit" class="btn-primary">Salvar Treino</button>
+        </form>
+    </section>
+
+    <section class="admin-section">
+        <h2>Gerenciar Treinos</h2>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Categoria</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% trainings.forEach(training => { %>
+                    <tr>
+                        <td><%= training.title %></td>
+                        <td><%= training.category %></td>
+                        <td>
+                            <a href="/admin/training/delete/<%= training._id %>" class="btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </section>
+</div>
+<%- include('partials/footer') %>

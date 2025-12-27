@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+<div class="container">
+    <article class="training-detail">
+        <h1><%= training.title %></h1>
+        <div class="meta">
+            <span>Categoria: <%= training.category %></span> | 
+            <span>Dificuldade: <%= training.difficulty %></span>
+        </div>
+        <div class="content">
+            <p><%= training.description %></p>
+        </div>
+    </article>
+
+    <section class="comments-section">
+        <h2>Comentários</h2>
+        <div class="comments-list">
+            <% comments.forEach(comment => { %>
+                <div class="comment">
+                    <strong><%= comment.user.username %></strong>
+                    <p><%= comment.content %></p>
+                    <small><%= comment.createdAt.toLocaleDateString() %></small>
+                </div>
+            <% }) %>
+        </div>
+
+        <% if (user) { %>
+            <form action="/trainings/<%= training._id %>/comment" method="POST" class="comment-form">
+                <textarea name="content" placeholder="Deixe seu comentário..." required></textarea>
+                <button type="submit" class="btn-primary">Enviar</button>
+            </form>
+        <% } else { %>
+            <p><a href="/login">Faça login</a> para comentar.</p>
+        <% } %>
+    </section>
+</div>
+<%- include('partials/footer') %>

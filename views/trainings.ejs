@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+<section class="page-header">
+    <h1>Treinos de Vôlei</h1>
+    <p>Explore nossa lista de exercícios para melhorar seu jogo.</p>
+</section>
+
+<section class="trainings-list">
+    <div class="container">
+        <div class="training-grid">
+            <% trainings.forEach(training => { %>
+                <div class="training-card">
+                    <h3><%= training.title %></h3>
+                    <p class="category"><%= training.category %></p>
+                    <p class="difficulty <%= training.difficulty.toLowerCase() %>"><%= training.difficulty %></p>
+                    <a href="/trainings/<%= training._id %>" class="btn-secondary">Ver Detalhes</a>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+<%- include('partials/footer') %>
