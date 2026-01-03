@@ -3,9 +3,12 @@ const Training = require('./models/Training');
 const User = require('./models/User');
 const bcrypt = require('bcryptjs');
 
-const mongoURI = 'mongodb://127.0.0.1:27017/voleiDB';
-
 require('dotenv').config();
+
+const mongoURI = process.env.MONGO_URI;
+mongoose.connect(mongoURI)
+    .then(() => console.log('Conectado ao MongoDB...'))
+    .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
 
 
 async function seed() {
