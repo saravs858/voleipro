@@ -27,12 +27,20 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  res.locals.isAdmin = req.session.user?.isAdmin || false;
+  next();
+});
+
 // Rotas
 const indexRoutes = require("./routes/index");
 const contactsRoutes = require("./routes/contact");
+const adminTrainingsRoutes = require("./routes/adminTrainings");
 
 app.use("/", indexRoutes);
 app.use("/contacts", contactsRoutes);
+app.use("/admin/trainings", adminTrainingsRoutes);
 
 // 404
 app.use((req, res) => {

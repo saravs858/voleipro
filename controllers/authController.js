@@ -18,7 +18,11 @@ exports.login = async (req, res) => {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
         if (user && await bcrypt.compare(password, user.password)) {
-            req.session.userId = user._id;
+            req.session.user = {
+            id: user._id,
+            isAdmin: user.isAdmin
+            };
+
             req.session.isAdmin = user.isAdmin;
             res.redirect('/');
         } else {

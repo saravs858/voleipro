@@ -1,0 +1,23 @@
+<%- include('../../partials/header') %>
+
+<div class="admin-training-form">
+  <h1>Editar Treino</h1>
+
+  <form action="/admin/trainings/edit/<%= training._id %>" method="POST">
+    <input name="title" value="<%= training.title %>" required>
+
+    <input name="category" value="<%= training.category %>" required>
+
+    <select name="difficulty">
+      <option value="iniciante" <%= training.difficulty === 'iniciante' ? 'selected' : '' %>>Iniciante</option>
+      <option value="intermediario" <%= training.difficulty === 'intermediario' ? 'selected' : '' %>>Intermediário</option>
+      <option value="avancado" <%= training.difficulty === 'avancado' ? 'selected' : '' %>>Avançado</option>
+    </select>
+
+    <textarea name="description" required><%= training.description %></textarea>
+
+    <button type="submit">Atualizar</button>
+  </form>
+</div>
+
+<%- include('../../partials/footer') %>

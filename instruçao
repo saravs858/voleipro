@@ -1,8 +1,0 @@
-#🛠️ Como Rodar:
-Extraia o arquivo .zip anexado.
-Execute npm install para instalar as dependências.
-Execute node seed.js para criar o usuário administrador e os treinos iniciais.
-Execute node server.js e acesse http://localhost:3000.
-Acesso Admin:
-Email: admin@volei.com
-Senha: admin123

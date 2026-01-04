@@ -1,0 +1,22 @@
+<%- include('../../partials/header') %>
+
+<div class="admin-training-form">
+  <h1>Novo Treino</h1>
+
+  <form action="/admin/trainings/new" method="POST">
+    <input name="title" placeholder="Título" required>
+    <input name="category" placeholder="Categoria" required>
+
+    <select name="difficulty">
+      <option value="iniciante">Iniciante</option>
+      <option value="intermediario">Intermediário</option>
+      <option value="avancado">Avançado</option>
+    </select>
+
+    <textarea name="description" placeholder="Descrição" required></textarea>
+
+    <button type="submit">Salvar</button>
+  </form>
+</div>
+
+<%- include('../../partials/footer') %>
